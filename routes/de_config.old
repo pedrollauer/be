@@ -1,0 +1,11 @@
+module.exports={
+	config:{
+ 
+    "host" : "mysql.pedrolauer.tech",
+    "port"     :  3306,
+    "user" : "pedrolauer_add1",
+    "password" : "E271828e",
+    "database" : "pedrolauer"
+}
+}
+
