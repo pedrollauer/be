@@ -9,7 +9,6 @@ var indexRouter = require('./routes/index');
 var thisRouter= require('./routes/this');
 var thisDRouter= require('./routes/details');
 var calendarRouter= require('./routes/calendar');
-var ajattRouter= require('./routes/ajatt');
 var cors = require('cors');
 var app = express();
 app.use(cors({
@@ -31,7 +30,6 @@ app.use('/this',thisRouter);
 app.use('/this/details',thisDRouter);
 app.use('/calendar',calendarRouter);
 
-app.use('/ajatt',ajattRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
