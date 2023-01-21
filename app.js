@@ -8,7 +8,9 @@ var cors = express();
 var indexRouter = require('./routes/index');
 var thisRouter= require('./routes/this');
 var thisDRouter= require('./routes/details');
+var journalRouter = require('./routes/journal');
 var calendarRouter= require('./routes/calendar');
+
 var cors = require('cors');
 var app = express();
 app.use(cors({
@@ -26,7 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/this',thisRouter);
+app.use('/this', thisRouter);
+app.use('/journal', journalRouter);
 app.use('/this/details',thisDRouter);
 app.use('/calendar',calendarRouter);
 
