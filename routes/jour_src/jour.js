@@ -62,13 +62,17 @@ const renameNotebook = async(body) =>{
 }
 
 const updateText = async(body) => {
+    console.log("Mio caro adorneto")
+    console.log(body)
     const query =  'Update journal.texts set text="'+body.text+'" where id='+body.chapt_id
     await queryDataBase(query)
 }
 
 const selectText = async(body) => {
     const query = 'Select * from journal.texts where id = '+body.chapt_id
-    return (await queryDataBase(query))[0]
+    response = await queryDataBase(query) 
+
+    return response[0]
 }
 
 const moveChapter = async(body) => {
