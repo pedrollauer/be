@@ -28,15 +28,22 @@ router.post('/',cors(corsOptions),async  function(req, res, next) {
 		case 0:
 			res.send(JSON.stringify(await jour.getNotebooks()))
 			break;
-		case 1:
-			res.send(JSON.stringify(await jour.deleteNotebook(req.body)))	
+        case 1:
+			res.send(JSON.stringify(await jour.selectChapters(req.body)))	
 			break;
 		case 2:
+			res.send(JSON.stringify(await jour.selectText(req.body)))	
 		
 			break;
 		case 3:
+			res.send(JSON.stringify(await jour.deleteNotebook(req.body)))		
 	
 			break;
+        case 4:
+            console.log('Adorno!')
+            await jour.updateText(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
 		default:
 			res.send("Not Found")
 			break
