@@ -36,12 +36,37 @@ router.post('/',cors(corsOptions),async  function(req, res, next) {
 		
 			break;
 		case 3:
-			res.send(JSON.stringify(await jour.deleteNotebook(req.body)))		
-	
+			res.send(JSON.stringify(await jour.deleteNotebook(req.body)))			
 			break;
         case 4:
-            console.log('Adorno!')
             await jour.updateText(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
+        case 5:
+            //Delete Notebooks
+            await jour.deleteNotebook(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break
+        case 6:
+            //Rename Notebook
+            await jour.renameNotebook(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
+        case 7:
+            //Rename Notebook
+            await jour.insertNotebook(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
+        case 8:
+            await jour.newChapter(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
+        case 9:
+            await jour.deleteChapter(req.body)
+            res.send(JSON.stringify({done: 1}))
+            break;
+        case 10:
+            await jour.moveChapter(req.body)
             res.send(JSON.stringify({done: 1}))
             break;
 		default:

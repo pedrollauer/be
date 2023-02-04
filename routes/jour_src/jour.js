@@ -55,14 +55,20 @@ const insertNotebook = async(body) => {
 
 const renameNotebook = async(body) =>{
         
-    const query = 'update journal.notebooks set name ="'+ body.name + '" where id ='+ body.id
+    const query = 'update journal.notebooks set name ="'+ body.name + '" where id ='+ body.note_id
 
     await queryDataBase(query)
 
 }
 
 const updateText = async(body) => {
-    const query =  'Update journal.texts set text="'+body.text+'" where id='+body.chapt_id
+    let query =  'Update journal.texts set title = "'+body.title+'", text="'+body.text+'" where id='+body.chapt_id
+    await queryDataBase(query)
+
+    if(body.title == null){
+        return
+    }
+    query =  'Update journal.chapters set title="'+body.title+'" where id='+body.chapt_id
     await queryDataBase(query)
 }
 
@@ -89,7 +95,7 @@ const newChapter = async(body) => {
     let query = 'insert into journal.chapters (note_id, title, description, created, last_mod) values (?,?,?,now(),now())'    
 
     let id
-    const values = [body.note_id, body.title, body.description]
+    const values = [body.note_id, "New Chapter",""]
     await queryDataBase(query, values,async (response, result)=>{
         id = response.insertId
 
