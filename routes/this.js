@@ -95,9 +95,6 @@ const getProjData = async(req) =>{
 	{	
 	  query='SELECT * FROM `proj_description` WHERE proj_id='+result.proj_id+' and language='+req.body.lang;
 	  const [description,]=await connection.query(query);
-	  console.log('Mio caro adone')
-	  console.log(query)
-	  console.log(description)
 
 	  query='SELECT stack FROM `proj_stack` WHERE proj_id='+result.proj_id;
 
@@ -106,7 +103,9 @@ const getProjData = async(req) =>{
 	
 	  const [images,]=await connection.query(query);
 
-	  responseData.push({proj_id:result.proj_id ,title:result.name,description:description[0].description,stacks:stacks,image:images[0].path});
+        console.log('**********************************************')
+        console.log(result)
+	  responseData.push({title: result.title, proj_id:result.proj_id ,description:description[0].description,stacks:stacks,image:images[0].path});
 	}
 
 	query = 'Select * from this.page_strings where page_id = 2 and language='+req.body.lang;

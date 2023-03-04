@@ -115,7 +115,7 @@ const selectChaptersById = async(body) => {
 
 const selectChapters = async(body) => {
 
-    const query = 'select * from journal.chapters where note_id = '+body.note_id
+    const query = 'select * from journal.chapters where note_id = '+body.note_id + ' order by id desc'
 
     return chapters = await queryDataBase(query)
 }
